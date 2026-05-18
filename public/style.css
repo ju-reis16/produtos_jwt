@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  background: #f4f7fb;
+}
+
+body {
+  margin: 0;
+  padding: 0 16px 32px;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.login-panel {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+header {
+  max-width: 980px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 2rem;
+}
+
+p {
+  margin: 0;
+  color: #555;
+}
+
+main {
+  max-width: 980px;
+  margin: 24px auto;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 16px rgba(0,0,0,.06);
+  margin-bottom: 24px;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.form-row {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.form-row label {
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #0066cc;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #6c757d;
+}
+
+button:not(:last-child) {
+  margin-right: 8px;
+}
+
+button:hover {
+  opacity: 0.95;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #eef3fb;
+}
+
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+tr:hover {
+  background: #f7f9fd;
+}
+
+.message {
+  margin-bottom: 12px;
+  color: #0b5ed7;
+}
+
+@media (min-width: 700px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .button-row {
+    display: flex;
+    gap: 10px;
+  }
+}
