@@ -11,7 +11,7 @@ const pool = require('../config/database');
 async function listarTodos() {
   // PostgreSQL: a query retorna um objeto 'result'
   const result = await pool.query(
-    'SELECT * FROM produtos ORDER BY id'
+    'SELECT * FROM produtos ORDER BY idp'
   );
   
   // Os dados ficam em result.rows
@@ -28,7 +28,7 @@ async function buscarPorId(id) {
   // PostgreSQL usa $1, $2, $3... como placeholders
   // (SQLite usava ? ? ?)
   const result = await pool.query(
-    'SELECT * FROM produtos WHERE id = $1',
+    'SELECT * FROM produtos WHERE idp = $1',
     [id]  // O array com os valores dos placeholders
   );
   
@@ -76,7 +76,7 @@ async function atualizar(id, dados) {
   const sql = `
     UPDATE produtos
     SET nome = $1, preco = $2, estoque = $3, categoria = $4
-    WHERE id = $5
+    WHERE idp = $5
     RETURNING *
   `;
   
@@ -97,7 +97,7 @@ async function atualizar(id, dados) {
 // ============================================================
 async function deletar(id) {
   const result = await pool.query(
-    'DELETE FROM produtos WHERE id = $1',
+    'DELETE FROM produtos WHERE idp = $1',
     [id]
   );
   
