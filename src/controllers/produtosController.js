@@ -57,42 +57,39 @@ async function buscarPorId(req, res) {
 // ============================================================
 async function criar(req, res) {
   try {
-
-    console.log('BODY RECEBIDO:', req.body);
-
     const { nome, preco, estoque, categoria } = req.body;
-
-    if (
-      nome === undefined ||
-      preco === undefined ||
-      estoque === undefined ||
-      categoria === undefined ||
-      nome === '' ||
-      categoria === ''
-    ) {
-      return res.status(400).json({
-        mensagem: 'Todos os campos são obrigatórios'
+    
+    // Validações
+    if (!nome || !preco || !estoque || !categoria) {
+      return res.status(400).json({ 
+        mensagem: 'Todos os campos são obrigatórios' 
       });
     }
-
-    const novoProduto = await ProdutoModel.criar({
-      nome,
-      preco,
-      estoque,
-      categoria
+    
+    if (parseFloat(preco) <= 0) {
+      return res.status(400).json({ 
+        mensagem: 'O preço deve ser maior que zero' 
+      });
+    }
+    
+    if (parseInt(estoque) < 0) {
+      return res.status(400).json({ 
+        mensagem: 'O estoque não pode ser negativo' 
+      });
+    }
+    
+    const novoProduto = await ProdutoModel.criar({ 
+      nome, 
+      preco, 
+      estoque, 
+      categoria 
     });
-
-    console.log('PRODUTO CRIADO:', novoProduto);
-
+    
     res.status(201).json(novoProduto);
-
   } catch (erro) {
-
-    console.error('ERRO AO CRIAR:', erro);
-
-    res.status(500).json({
+    res.status(500).json({ 
       mensagem: 'Erro ao criar produto',
-      erro: erro.message
+      erro: erro.message 
     });
   }
 }
